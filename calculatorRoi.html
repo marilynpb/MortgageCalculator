@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Boostrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="calculatorRoi.css">
+    <title>Third-Party ROI Calculator</title>
+</head>
+<body>
+    <main>
+        <div class="container-fluid p-4 py-5 calulator">
+            <div class="container-fluid mx-auto container-calculador row text-start py-5 px-lg-5 px-md-4">
+                <!-- Button Change Calculator Start -->
+                <div class="d-flex justify-content-end mb-3 w-100">
+                    <a href="./calculatorNoi.html" class="text-center btn btn-lg text-light border-0 rounded-5">Change to Owner Managed Multifamily NOI</a>
+                </div>
+                <!-- Button Change Calculator End -->
+                
+                <!-- Title Start -->
+                <h1 class="text-start">Mortgage Payment Calculator</h1>
+                <h2 class="mb-4">New Technology Savings Calculator for Third-Party Rental Propery Managers</h2>
+                <!-- Title End -->
+
+                <!-- Result Sumary Start -->
+                <div class="col-12 container-result-sumary p-0 mt-4">
+                    <div class="container">
+                        <div class="row justify-content-evenly w-100">
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                                <input type="text" class="w-100 text-center ganancy" id="net-operating-income-increase" name="net-operating-income-increase"  disabled value="$ 0">  
+                                <label for="net-operating-income-increase" class="text-center w-100 ganancy">Net Operating Income Increase</label>
+                            </div>
+                            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6">
+                                <input type="text" class="w-100 text-center"  id="revenue-recovered-from-vacancy-loss" name="revenue-recovered-from-vacancy-loss" disabled value="$ 0">
+                                <label for="revenue-recovered-from-vacancy-loss" class="text-center w-100">Revenue recovered from Vacancy loss</label>
+                            </div>
+                            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6">
+                                <input type="text" class="w-100 text-center" id="noi-increase" name="noi-increase" placeholder="%-" disabled value="0 %">  
+                                <label for="noi-increase" class="text-center w-100">NOI % increase</label>
+                            </div>
+                            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6">
+                                <input type="text" class="w-100 text-center" id="time-to-pay-off-new-technology" name="time-to-pay-off-new-technology" disabled value="0 Days">   
+                                <label for="time-to-pay-off-new-technology" class="text-center w-100">Time to pay off new technology</label>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                                <input type="text" class="w-100 text-center" id="new-technology-roi-multiple" name="new-technology-roi-multiple" disabled value="0">  
+                                <label for="new-technology-roi-multiple" class="text-center w-100">X return on money spent</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Result Sumary End -->
+
+                <!-- Portfolio Values (Ranges) Start -->
+                <div class="col-lg-5 col-md-12 col-sm-12 pe-lg-5 pe-md-0">
+                    <div class="row mt-4 pe-4 portfolio-container">
+                        <h2 class="mb-3 mt-4 mx-1 fw-bold title-portfolio">Portfolio values</h2>
+                        <div class="col-12 mb-4">
+                            <label class="p-0 m-0 mx-1" for="number-of-units-managed">Number of units managed</label>
+                            <div class="container-range">
+                                <input class="p-0 m-0" type="range" id="customRange1" min="0" max="5000" value="100" oninput="slider()">
+                                <div id="rangeValue1" class="p-0 m-0">0</div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <label class="p-0 m-0 mx-1" for="average-monthly-rent-per-unit">Average monthly rent per unit</label>
+                            <div class="container-range">
+                                <input class="p-0 m-0" type="range" id="customRange2" min="0" max="5000" value="1250" oninput="slider()">
+                                <div id="rangeValue2" class="p-0 m-0">0</div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <label class="p-0 m-0 mx-1" for="management-fee">Management fee</label>
+                            <div class="container-range">
+                                <input class="p-0 m-0" type="range" id="customRange3" min="0" max="100" value="3" oninput="slider()">
+                                <div id="rangeValue3" class="p-0 m-0">0</div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <label class="p-0 m-0 mx-1" for="vacancy-rate">Vacancy rate</label>
+                            <div class="container-range">
+                                <input class="p-0 m-0" type="range" id="customRange4" min="0" max="100" value="3" oninput="slider()">
+                                <div id="rangeValue4" class="p-0 m-0">0</div>
+                            </div>
+                        </div>
+
+                        <!-- Operating Expenses % of Gross Rent Per unit (Range) Start -->
+                        <h2 class="mt-5 mb-3 fw-bold title-portfolio">Operating Expenses % of Revenue</h2>
+                        <div class="col-12 mb-4">
+                            <label class="p-0 m-0 mx-1">Salaries & Personnel</label>
+                            <div class="container-range">
+                                <input class="p-0 m-0" type="range" id="customRange5" min="0" max="100" value="10" oninput="slider()">
+                                <div id="rangeValue5" class="p-0 m-0">0</div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <label class="p-0 m-0 mx-1">New Owner Advertising</label>
+                            <div class="container-range">
+                                <input class="p-0 m-0" type="range" id="customRange6" min="0" max="100" value="2" oninput="slider()">
+                                <div id="rangeValue6" class="p-0 m-0">0</div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <label class="p-0 m-0 mx-1">Facilities (auto, tech, rent etc.)</label>
+                            <div class="container-range">
+                                <input class="p-0 m-0" type="range" id="customRange7" min="0" max="100" value="4" oninput="slider()">
+                                <div id="rangeValue7" class="p-0 m-0">0</div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <label class="p-0 m-0 mx-1">Other operating expenses</label>
+                            <div class="container-range">
+                                <input class="p-0 m-0" type="range" id="customRange8" min="0" max="100" value="3" oninput="slider()">
+                                <div id="rangeValue8" class="p-0 m-0">0</div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <label class="p-0 m-0 mx-1">Payroll taxes</label>
+                            <div class="container-range">
+                                <input class="p-0 m-0" type="range" id="customRange9" min="0" max="100" value="2" oninput="slider()">
+                                <div id="rangeValue9" class="p-0 m-0">0</div>
+                            </div>
+                        </div>
+                        <!-- Operating Expenses % of Gross Rent Per unit (Range) End -->
+
+                        <!-- Total Opex Start -->
+                        <div class="col-12 mb-2 total-opex pt-3 mt-4">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="total-opex" class="form-label label-title m-0 p-0">Total Opex
+                                    </label>
+                                </div>
+                                <div class="col-6">
+                                        <input type="text" class="mb-3 mt-0 p-1 text-end w-100" value="%41" id="total-opex" name="total-opex" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Total Opex End -->
+                    </div>
+                </div>
+                <!-- Portfolio Values (Ranges) Start -->
+
+                <!-- Card With Automation Start -->
+                <div class="col-lg-7 col-md-12 col-sm-12 rounded-5 pt-5 h-50">
+                    <div class="row">
+                        <div class="col-12 container-card rounded-4 mb-5 p-0">
+                            <div class="card-header pt-4 pb-3 px-5 text-center rounded-top-4">
+                                <h4 class="my-0 fw-bold">With Automation</h4>
+                            </div>
+                            <div class="container mt-3 px-4">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                <p class="fw-light title_category m-0">Revenue: Management fees</p>
+                                                <input type="text" class="w-100 text-center"  id="management-fees-2" name="management-fees-2" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                <p class="fw-light title_category m-0">Revenue: Application fees</p>
+                                                <input type="text" class="w-100 text-center"  id="application-fees-2" name="application-fees-2" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                <p class="fw-light title_category m-0">Revenue: Leasing fees</p>
+                                                <input type="text" class="w-100 text-center"  id="leasing-fees-2" name="leasing-fees-2" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                <p class="fw-light title_category m-0">Revenue: Owner fees</p>
+                                                <input type="text" class="w-100 text-center"  id="owner-fees-2" name="owner-fees-2" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                <p class="fw-light title_category m-0">Revenue: Tenant fees</p>
+                                                <input type="text" class="w-100 text-center"  id="tenant-fees-2" name="tenant-fees-2" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                <p class="fw-light title_category m-0">Revenue: Other</p>
+                                                <input type="text" class="w-100 text-center"  id="other-2" name="other-2" disabled>
+                                            </div>
+
+                                            <div class="col-12 mb-4 text-center vissible-list-WA">
+                                                <p class="fw-light title_category m-0">. . .</p>                                            
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                <p class="fw-light title_category m-0">Revenue loss due to vacancy</p>
+                                                <input type="text" class="w-100 text-center"  id="revenue-loss-due-to-vacancy-2" name="revenue-loss-due-to-vacancy-2" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                <p class="fw-light title_category m-0">Gross Profit</p>
+                                                <input type="text" class="w-100 text-center"  id="gross-profit-year-2" name="gross-profit-year-2" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                <p class="fw-light title_category m-0">Salaries & Personnel</p>
+                                                <input type="text" class="w-100"  name="salaries-personnel-2" id="salaries-personnel-2" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12  mb-5 text-center hidden-list-WA container-values">
+                                                <p class="fw-light title_category m-0">New Owner Advertising</p>
+                                                <input type="text" class="w-100"  id="new-owner-advertising-2" name="new-owner-advertising-2" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                <p class="fw-light title_category m-0">Facilities (auto, tech, rent etc.)</p>
+                                                <input type="text" id="facilities-2" name="facilities-2" class="w-100"  disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                <p class="fw-light title_category m-0">Other operating expenses</p>
+                                                <input type="text" id="other-operating-expenses-2" name="other-operating-expenses-2" class="w-100"  disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                <p class="fw-light title_category m-0">Payroll taxes</p>
+                                                <input type="text" id="payroll-taxes-2" name="payroll-taxes-2" class="w-100"  disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                <p class="fw-light title_category m-0">New software cost</p>
+                                                <input type="text" class="w-100"  name="new-software-cost-2" id="new-software-cost-2" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                <p class="fw-light title_category m-0">Operating Expenses</p>
+                                                <input type="text" class="w-100" name="operating-expenses-2" id="operating-expenses-2" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                <p class="fw-light title_category m-0">Net Operating Income</p>
+                                                <input type="text" class="w-100" id="net-operating-income-2" name="net-operating-income-2" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                <p class="fw-light title_category m-0">Net Operating Income %</p>
+                                                <input type="text" class="w-100" id="net-operating-income-porcentage-2" name="net-operating-income-porcentage-2" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                <p class="fw-light title_category m-0">Days to pay off</p>
+                                                <input type="text" class="w-100" id="days-to-pay-off-new-technology-2" name="days-to-pay-off-new-technology-2" disabled>
+                                            </div>
+
+                                            <div class="col-12 px-2">
+                                                <button type="button" id="details-button-WA" class="btn btn-lg btn-primary mb-4 mx-auto w-100 rounded-5" onclick="toggleElements()">More details</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card With Automation End -->
+
+                        <!-- Card Without Automation Start -->
+                        <div class="col-12 container-card rounded-4 mb-5 p-0 mt-2">
+                            <div class="card-header pt-4 pb-3 px-5 text-center rounded-top-4">
+                                <h4 class="my-0 fw-bold">Without Automation</h4>
+                            </div>
+                            <div class="container mt-3 px-4">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                <p class="fw-light title_category m-0">Revenue: Management fees</p>
+                                                <input type="text" class="w-100 text-center"  id="management-fees-1" name="management-fees-1" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                <p class="fw-light title_category m-0">Revenue: Application fees</p>
+                                                <input type="text" class="w-100 text-center"  id="application-fees-1" name="application-fees-1" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                <p class="fw-light title_category m-0">Revenue: Leasing fees</p>
+                                                <input type="text" class="w-100 text-center"  id="leasing-fees-1" name="leasing-fees-1" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                <p class="fw-light title_category m-0">Revenue: Owner fees</p>
+                                                <input type="text" class="w-100 text-center"  id="owner-fees-1" name="owner-fees-1" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                <p class="fw-light title_category m-0">Revenue: Tenant fees</p>
+                                                <input type="text" class="w-100 text-center"  id="tenant-fees-1" name="tenant-fees-1" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                <p class="fw-light title_category m-0">Revenue: Other</p>
+                                                <input type="text" class="w-100 text-center"  id="other-1" name="other-1" disabled>
+                                            </div>
+
+                                            <div class="col-12 mb-4 text-center vissible-list-WOA">
+                                                <p class="fw-light title_category m-0">. . .</p>                                            
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                <p class="fw-light title_category m-0">Revenue loss due to vacancy</p>
+                                                <input type="text" class="w-100 text-center"  id="revenue-loss-due-to-vacancy-1" name="revenue-loss-due-to-vacancy-1" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                <p class="fw-light title_category m-0">Gross Profit</p>
+                                                <input type="text" class="w-100 text-center"  id="gross-profit-year-1" name="gross-profit-year-1" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                <p class="fw-light title_category m-0">Salaries & Personnel</p>
+                                                <input type="text" class="w-100"  name="salaries-personnel-1" id="salaries-personnel-1" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12  mb-5 text-center hidden-list-WOA container-values">
+                                                <p class="fw-light title_category m-0">New Owner Advertising</p>
+                                                <input type="text" class="w-100"  id="new-owner-advertising-1" name="new-owner-advertising-1" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                <p class="fw-light title_category m-0">Facilities (auto, tech, rent etc.)</p>
+                                                <input type="text" id="facilities-1" name="facilities-1" class="w-100"  disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                <p class="fw-light title_category m-0">Other operating expenses</p>
+                                                <input type="text" id="other-operating-expenses-1" name="other-operating-expenses-1" class="w-100"  disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                <p class="fw-light title_category m-0">Payroll taxes</p>
+                                                <input type="text" id="payroll-taxes-1" name="payroll-taxes-1" class="w-100"  disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                <p class="fw-light title_category m-0">New software cost</p>
+                                                <input type="text" class="w-100"  name="new-software-cost-1" id="new-software-cost-1" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                <p class="fw-light title_category m-0">Operating Expenses</p>
+                                                <input type="text" class="w-100"  name="operating-expenses-1" id="operating-expenses-1" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                <p class="fw-light title_category m-0">Net Operating Income</p>
+                                                <input type="text" class="w-100"  id="net-operating-income-1" name="net-operating-income-1" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                <p class="fw-light title_category m-0">Net Operating Income %</p>
+                                                <input type="text" class="w-100"  id="net-operating-income-porcentage-1" name="net-operating-income-porcentage-1" disabled>
+                                            </div>
+
+                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                <p class="fw-light title_category m-0">Days to pay off</p>
+                                                <input type="text" class="w-100" id="days-to-pay-off-new-technology-1" name="days-to-pay-off-new-technology-1" disabled>
+                                            </div>
+
+                                            <div class="col-12 px-2">
+                                                <button type="button" id="details-button-WOA" class="btn btn-lg btn-primary mb-4 mx-auto w-100 rounded-5" onclick="toggleElements()">More details</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card Without Automation End -->
+                    </div>
+                </div>
+
+                <!-- Download Report Start -->
+                <div class="container-fluid container-download pb-3 text-center">
+                    <h4 class="my-0 fw-bold pt-3 pb-2">Download report</h4>
+                    <h5>Download a more detailed report by entering your email below:</h5>
+                    <form class="mt-4">
+                        <div class="row">
+                            <div class="col-12">
+                                <input placeholder="Enter your email" class="w-50 p-2">
+                            </div>
+                            <div class="col-12 mt-4">
+                                <button type="button" id="download-csv-button" class="btn btn-lg btn-primary mb-4 mx-lg-5 mx-sm-0 rounded-5" onclick="">
+                                    Download CSV
+                                    <img src="./img/excel-icon.svg" class="img-fluid" alt="csv-icon">
+                                </button>
+                                <button type="button" id="download-pdf-button" class="btn btn-lg btn-primary mb-4 mx-auto rounded-5" onclick="">
+                                    Download PDF
+                                    <img src="./img/excel-icon.svg" class="img-fluid" alt="pdf-icon">
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Download Report End -->
+            </div>
+        </div>
+    </main>
+    
+    <!-- Calculator JS -->
+    <script src="./calculationRoi.js"></script>
+
+    <!-- Btn More Details JS -->
+    <script src="./btnMoreDetailsRoi.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://unpkg.com/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

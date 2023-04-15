@@ -1,0 +1,438 @@
+/* Import Font */
+@font-face {
+    font-family: "ProductSans";
+    src: url("./product-sans/Product\ Sans\ Regular.ttf");
+}
+
+
+/* General CSS Start*/
+
+* {
+    box-sizing: border-box;
+    font-family: 'ProductSans', sans-serif;
+}
+
+body{
+    background: rgb(229,212,250);
+    background: linear-gradient(90deg, #bdb8f5 0%, #bcbcf6 47%, #6155de 100%);
+}
+
+a{
+    background-color: #8230DF!important;
+    color: #FFFFFF!important;
+}
+
+a:hover{
+    background-color: #6926b7!important;
+}
+
+h1, b{
+    color: #232222;
+}
+
+h2 {
+    font-weight: lighter;
+    font-size: 1.3rem;
+    color: #333333;
+}
+
+h3 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #0A69E9;
+    font-weight: bold;
+}
+
+h4 {
+    color: #4E5E6B;
+    font-weight: 600;
+    font-size: 1.6rem!important;
+}
+
+h5 {
+    color: #0A69E9;
+    font-size: 2.5rem!important;
+}
+
+table, td, tr, th{
+    border: none;
+}
+
+label {
+    color: #838391;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+input[type="text"] {
+    background-color: transparent;
+    border: 2px solid #DCE0E5;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #0A69E9!important;
+}
+
+input::placeholder{
+    color: #969ea4;
+}
+
+/* General CSS End */
+
+
+/* Container Calculator Start */
+
+.container-calculador{
+    min-width: 900px;
+    max-width: 75%;
+    background-color: #F9FAFD;
+}
+
+/* Container Calculator End */
+
+
+/* Result Sumary Start */
+
+.container-result-sumary .ganancy{
+    color: #8230DF!important;
+    font-weight: bold;
+}
+
+.container-result-sumary{
+    background-color:#FFFFFF;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+}
+
+.container-result-sumary input{
+    border: none;
+    font-size: 2rem;
+    text-align: center;
+    color: #232222!important;
+    font-weight: bold;
+}
+
+.container-result-sumary label{
+    border: none;
+    font-size: 0.8rem;
+    text-align: center;
+    color: #868080;
+}
+
+/* Result Sumary End*/
+
+
+/* Portfolio Values (Ranges) Start */
+
+.title-portfolio{
+    color: #4E5E6B;
+}
+
+.portfolio-container label{
+    color: #333333;
+    font-weight: lighter;
+}
+
+.form-range::-webkit-slider-runnable-track {
+    background-color: #D5D5EA;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    background-color: white;
+    border: 1px solid rgb(169, 123, 230);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background-color: #8E80E7;
+    border-radius: 15px;
+}
+
+input[type="range"]::-webkit-slider-thumb::before {
+    content: attr(value);
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+    line-height: 20px;
+    background: #ddd;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    position: absolute;
+    margin-top: -30px;
+    margin-left: -5px;
+    font-size: 14px;
+}
+
+.value-span{
+    float: right;
+    color:  #797c7d;
+    font-weight: bolder;
+}
+
+/* Custom Range */
+.container-range{
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 5px;
+}
+
+input[type="range"]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    display: block;
+    width: 80%;
+    height: 8px;
+    background-color: #d5d5d5;
+    border-radius: 8px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track{
+    -webkit-appearance: none;
+    height: 8px;
+}
+
+input[type="range"]::-moz-track{
+    -moz-appearance: none;
+    height: 8px;
+}
+
+input[type="range"]::-ms-track{
+    appearance: none;
+    height: 8px;
+}
+
+input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background-color: #f4f6f9;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px;
+    border: 3px solid #8C56FF;
+}
+
+input[type="range"]::-moz-range-thumb{
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background-color: #4a4584;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px;
+    border: none;
+}
+
+input[type="range"]::-ms-thumb{
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    background-color: #4a4584;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px;
+    border: none;
+}
+
+input[type="range"]:active::-webkit-slider-thumb{
+    background-color: #ffffff;
+    border: 3px solid #4a4584;
+}
+
+#rangeValue1,#rangeValue2,#rangeValue3,#rangeValue4,#rangeValue5,#rangeValue6,#rangeValue7,#rangeValue8,#rangeValue9,#rangeValue10,#rangeValue11{
+    width: 13%;
+    position: relative;
+    background-color: #8230E1;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 5px;
+}
+
+/* Portfolio Values (Ranges) End */
+
+
+/* Total Opex Start */
+
+.total-opex{
+    border-top: 2px solid #b9bacd2a;
+}
+
+.total-opex label{
+    color: #232222!important;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.total-opex input{
+    color: #232222!important;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.5rem;
+}
+
+/* Total Opex End */
+
+
+/* Card With Automation Start */
+
+.container-card{
+    background-color:#FFFFFF;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.container-card span{
+    color: #A17CCE;
+    font-size: 2.5rem;
+}
+
+.container-card input{
+    color: #363434!important;
+    font-weight: bold;
+    background-color: transparent;
+    border-top: 2px solid #DCE0E5;
+    border-radius: 10px;
+}
+
+.container-card .title_category{
+    color: #333333!important;
+}
+
+.container-card p{
+    font-size: 1rem;
+    color: #bdc3c6!important;
+}
+
+.container-card td{
+    font-size: 1.2rem;
+}
+
+.card-header h4{
+    color: #333333;
+    font-weight: bold;
+}
+
+/* Card With Automation End */
+
+
+/* Buttons More Details Start */
+
+#details-button-WA, #details-button-WOA{
+    background-color: transparent;
+    border: 2px solid #8230DF!important;
+    color: #8230DF!important;
+    font-weight: bold;
+}
+
+#details-button-WA:hover, #details-button-WOA:hover{
+    background-color: #8230DF!important;
+    color: #FFFFFF!important;
+}
+
+.vissible-list-WA, .vissible-list-WOA{
+    display: block;
+}
+
+.hidden-list-WA, .hidden-list-WOA{
+    display: none;
+}
+
+/* Buttons More Details End */
+
+
+/* Download Report Start */
+
+.container-download{
+    background-color:#FFFFFF;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+}
+
+.container-download h4{
+    color: #232222;
+}
+
+.container-download h5{
+    font-size: 1.4rem!important;
+    color: #333333;
+}
+
+.container-download input{
+    color: #363434!important;
+    font-weight: bold;
+    background-color: transparent;
+    border: 2px solid #DCE0E5;
+    border-radius: 10px;
+    min-width: 220px;
+    font-size: 1.1rem;
+}
+
+
+.container-download button{
+    background-color: #8230DF!important;
+    border: none;
+    color: #FFFFFF!important;
+}
+
+.container-download button:hover{
+    background-color: #6926b7!important;
+}
+
+/* Download Report End */
+
+
+/* MediaQuerys Start */
+@media (max-width:1700px) {
+    .container-result-sumary input{
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width:1582px) {
+    label {
+        font-size: 1.1rem;
+    }
+    .container-calculador{
+        max-width: 90%;
+    }
+}
+
+@media (max-width:1329px) {
+    .container-calculador{
+        max-width: 100%;
+    }
+}
+
+@media (max-width:1000px) {
+    .container-calculador{
+        min-width: 100%;
+    }
+}
+
+@media (max-width:767.27px) {
+    .container-inputs-responsive{
+        margin-bottom: 30px!important;
+    }
+}
+
+@media (max-width:510px) {
+    .container-values{
+        width: 100%!important;
+        margin-bottom: 25px!important;
+    }
+}
+
+@media (max-width:443px) {
+    h4 {
+        font-size: 1.2rem;
+    }
+}
+
+/* MediaQuerys End */
+
