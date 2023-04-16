@@ -18,12 +18,12 @@
             <div class="container-fluid mx-auto container-calculador row text-start py-5 px-lg-5 px-md-4">
                 <!-- Button Change Calculator Start -->
                 <div class="d-flex justify-content-end mb-3 w-100">
-                    <a href="./calculatorNoi.html" class="text-center btn btn-lg text-light border-0 rounded-5">Change to Owner Managed Multifamily NOI</a>
+                    <a href="./calculatorNoi.html" class="text-center btn btn-lg text-light border-0 rounded-3 w-100">Change to Owner Managed Multifamily NOI</a>
                 </div>
                 <!-- Button Change Calculator End -->
                 
                 <!-- Title Start -->
-                <h1 class="text-start">Mortgage Payment Calculator</h1>
+                <h1 class="text-start mt-4">Property Management ROI Calculator</h1>
                 <h2 class="mb-4">New Technology Savings Calculator for Third-Party Rental Propery Managers</h2>
                 <!-- Title End -->
 
@@ -55,6 +55,33 @@
                     </div>
                 </div>
                 <!-- Result Sumary End -->
+
+                <!-- Download Report Start -->
+                <div class="container-fluid container-download text-center pt-2">
+                    <button type="button" id="download-report" class="btn btn-lg btn-primary mb-4 mx-lg-5 mx-sm-0 rounded-3">
+                        Download detailed report 
+                        <img src="./img/download-icon-violet.svg" class="img-fluid" alt="csv-icon">
+                    </button>
+                    <form class="hidden" id="download-form">
+                        <h4 class="my-0 fw-bold pt-2 pb-2">Download report</h4>
+                        <div class="row">
+                            <div class="col-12">
+                                <input placeholder="Enter your email" class="w-50 p-2">
+                            </div>
+                            <div class="col-12 mt-4">
+                                <button type="button" id="download-csv-button" class="btn btn-lg btn-primary mb-4 mx-lg-5 mx-sm-0 rounded-3" onclick="">
+                                    Download CSV
+                                    <img src="./img/excel-icon.svg" class="img-fluid" alt="csv-icon">
+                                </button>
+                                <button type="button" id="download-pdf-button" class="btn btn-lg btn-primary mb-4 mx-auto rounded-3" onclick="">
+                                    Download PDF
+                                    <img src="./img/excel-icon.svg" class="img-fluid" alt="pdf-icon">
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Download Report End -->
 
                 <!-- Portfolio Values (Ranges) Start -->
                 <div class="col-lg-5 col-md-12 col-sm-12 pe-lg-5 pe-md-0">
@@ -251,7 +278,7 @@
                                             </div>
 
                                             <div class="col-12 px-2">
-                                                <button type="button" id="details-button-WA" class="btn btn-lg btn-primary mb-4 mx-auto w-100 rounded-5" onclick="toggleElements()">More details</button>
+                                                <button type="button" id="details-button-WA" class="btn btn-lg btn-primary mb-4 mx-auto w-100 rounded-3" onclick="toggleElements()">More details</button>
                                             </div>
                                         </div>
                                     </div>
@@ -364,7 +391,7 @@
                                             </div>
 
                                             <div class="col-12 px-2">
-                                                <button type="button" id="details-button-WOA" class="btn btn-lg btn-primary mb-4 mx-auto w-100 rounded-5" onclick="toggleElements()">More details</button>
+                                                <button type="button" id="details-button-WOA" class="btn btn-lg btn-primary mb-4 mx-auto w-100 rounded-3" onclick="toggleElements()">More details</button>
                                             </div>
                                         </div>
                                     </div>
@@ -375,29 +402,6 @@
                     </div>
                 </div>
 
-                <!-- Download Report Start -->
-                <div class="container-fluid container-download pb-3 text-center">
-                    <h4 class="my-0 fw-bold pt-3 pb-2">Download report</h4>
-                    <h5>Download a more detailed report by entering your email below:</h5>
-                    <form class="mt-4">
-                        <div class="row">
-                            <div class="col-12">
-                                <input placeholder="Enter your email" class="w-50 p-2">
-                            </div>
-                            <div class="col-12 mt-4">
-                                <button type="button" id="download-csv-button" class="btn btn-lg btn-primary mb-4 mx-lg-5 mx-sm-0 rounded-5" onclick="">
-                                    Download CSV
-                                    <img src="./img/excel-icon.svg" class="img-fluid" alt="csv-icon">
-                                </button>
-                                <button type="button" id="download-pdf-button" class="btn btn-lg btn-primary mb-4 mx-auto rounded-5" onclick="">
-                                    Download PDF
-                                    <img src="./img/excel-icon.svg" class="img-fluid" alt="pdf-icon">
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- Download Report End -->
             </div>
         </div>
     </main>
@@ -407,6 +411,9 @@
 
     <!-- Btn More Details JS -->
     <script src="./btnMoreDetailsRoi.js"></script>
+
+    <!-- Show Form Download JS -->
+    <script src="./showFormDownload.js"></script>
 
     <!-- Bootstrap JS -->
     <script src="https://unpkg.com/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>

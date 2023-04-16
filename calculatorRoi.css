@@ -14,16 +14,17 @@
 
 body{
     background: rgb(229,212,250);
-    background: linear-gradient(90deg, #bdb8f5 0%, #bcbcf6 47%, #6155de 100%);
+    background: linear-gradient(90deg, #d6def4 0%, #bbcaf4 47%, #536cf7 100%);
 }
 
 a{
-    background-color: #8230DF!important;
+    background-color: #2F4DED!important;
     color: #FFFFFF!important;
+    letter-spacing: 2px;
 }
 
 a:hover{
-    background-color: #6926b7!important;
+    background-color: #2641db!important;
 }
 
 h1, b{
@@ -69,7 +70,6 @@ label {
 input[type="text"] {
     background-color: transparent;
     border: 2px solid #DCE0E5;
-    border-radius: 10px;
     font-size: 1.2rem;
     text-align: center;
     color: #0A69E9!important;
@@ -87,7 +87,7 @@ input::placeholder{
 .container-calculador{
     min-width: 900px;
     max-width: 75%;
-    background-color: #F9FAFD;
+    background-color:#FFFFFF!important;
 }
 
 /* Container Calculator End */
@@ -96,12 +96,12 @@ input::placeholder{
 /* Result Sumary Start */
 
 .container-result-sumary .ganancy{
-    color: #8230DF!important;
+    color: #2F4DED!important;
     font-weight: bold;
 }
 
 .container-result-sumary{
-    background-color:#FFFFFF;
+    background-color:#F8F9FD;
     box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
 
@@ -140,11 +140,11 @@ input::placeholder{
 
 input[type="range"]::-webkit-slider-thumb {
     background-color: white;
-    border: 1px solid rgb(169, 123, 230);
+    border: 1px solid #3898EC;
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-    background-color: #8E80E7;
+    background-color: #3898EC;
     border-radius: 15px;
 }
 
@@ -214,14 +214,14 @@ input[type="range"]::-webkit-slider-thumb{
     border-radius: 50%;
     cursor: pointer;
     margin-top: -6px;
-    border: 3px solid #8C56FF;
+    border: 3px solid #2F4DED;
 }
 
 input[type="range"]::-moz-range-thumb{
     -webkit-appearance: none;
     height: 20px;
     width: 20px;
-    background-color: #4a4584;
+    background-color: #3898EC;
     border-radius: 50%;
     cursor: pointer;
     margin-top: -6px;
@@ -232,7 +232,7 @@ input[type="range"]::-ms-thumb{
     appearance: none;
     height: 20px;
     width: 20px;
-    background-color: #4a4584;
+    background-color: #3898EC;
     border-radius: 50%;
     cursor: pointer;
     margin-top: -6px;
@@ -247,7 +247,7 @@ input[type="range"]:active::-webkit-slider-thumb{
 #rangeValue1,#rangeValue2,#rangeValue3,#rangeValue4,#rangeValue5,#rangeValue6,#rangeValue7,#rangeValue8,#rangeValue9,#rangeValue10,#rangeValue11{
     width: 13%;
     position: relative;
-    background-color: #8230E1;
+    background-color: #2F4DED;
     color: #ffffff;
     text-align: center;
     padding: 10px 0;
@@ -284,21 +284,15 @@ input[type="range"]:active::-webkit-slider-thumb{
 /* Card With Automation Start */
 
 .container-card{
-    background-color:#FFFFFF;
+    background-color:#F8F9FD;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-}
-
-.container-card span{
-    color: #A17CCE;
-    font-size: 2.5rem;
 }
 
 .container-card input{
     color: #363434!important;
     font-weight: bold;
-    background-color: transparent;
-    border-top: 2px solid #DCE0E5;
-    border-radius: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #DCE0E5;
 }
 
 .container-card .title_category{
@@ -326,13 +320,13 @@ input[type="range"]:active::-webkit-slider-thumb{
 
 #details-button-WA, #details-button-WOA{
     background-color: transparent;
-    border: 2px solid #8230DF!important;
-    color: #8230DF!important;
+    border: 2px solid #2F4DED!important;
+    color: #2F4DED!important;
     font-weight: bold;
 }
 
 #details-button-WA:hover, #details-button-WOA:hover{
-    background-color: #8230DF!important;
+    background-color: #2F4DED!important;
     color: #FFFFFF!important;
 }
 
@@ -349,13 +343,17 @@ input[type="range"]:active::-webkit-slider-thumb{
 
 /* Download Report Start */
 
+.hidden {
+    display: none;
+}
+
 .container-download{
-    background-color:#FFFFFF;
+    background-color:#F8F9FD;
     box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
 
 .container-download h4{
-    color: #232222;
+    color: #5c5b5b;
 }
 
 .container-download h5{
@@ -366,22 +364,37 @@ input[type="range"]:active::-webkit-slider-thumb{
 .container-download input{
     color: #363434!important;
     font-weight: bold;
-    background-color: transparent;
+    background-color: #FFFFFF;
     border: 2px solid #DCE0E5;
-    border-radius: 10px;
     min-width: 220px;
     font-size: 1.1rem;
 }
 
+#download-report{
+    background-color: transparent!important;
+    border: 2px solid #2F4DED;
+    color: #2F4DED!important;
+    font-weight: bold;
+}
+
+#download-report:hover{
+    background-color: #2F4DED!important;
+    border: 2px solid #2F4DED;
+    color: #FFFFFF!important;
+}
+
+#download-report:hover img {
+    content: url('./img/download-icon-white.svg');
+}
 
 .container-download button{
-    background-color: #8230DF!important;
+    background-color: #2F4DED!important;
     border: none;
     color: #FFFFFF!important;
 }
 
 .container-download button:hover{
-    background-color: #6926b7!important;
+    background-color: #2641db!important;
 }
 
 /* Download Report End */
