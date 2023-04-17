@@ -47,10 +47,18 @@ function createSliders(){
     for (let i=0; i<=slidersID.length-1; i++){
         let range=document.getElementById(slidersID[i]);
         let rangeValue=document.getElementById(slidersInfo[i]);
-        rangeValue.innerHTML = range.value;
+        if (i>=3){
+            rangeValue.innerHTML = range.value + " %";
+        }else{
+            rangeValue.innerHTML = range.value
+        }
         slidersValues[i]=parseInt(range.value);    
         range.addEventListener('input', () => { 
-            rangeValue.innerHTML = range.value; 
+            if (i>=3){
+                rangeValue.innerHTML = range.value + " %";
+            }else{
+                rangeValue.innerHTML = range.value
+            }
             let pos = slidersID.indexOf(range.id);
             slidersValues[pos]=parseInt(range.value);
             calculateAll(); 
@@ -73,57 +81,49 @@ function calculateAll(){
 
 function calculate_total_rental_income(val){
     fields[val].value = slidersValues[0] * slidersValues[1] * 12;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
 function calculate_rent_loss_due_to_vacancy(val){
     fields[val].value = fields[0].value * (slidersValues[2] / 100);
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
 function calculate_gross_profit(val){
     fields[val].value = fields[0].value - fields[1].value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
 function calculate_utilities_maintenance(val){
     fields[val].value = (slidersValues[3]/100) * fields[0].value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
 function calculate_advertising_marketing(val){
     fields[val].value = (slidersValues[4]/100) * fields[0].value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
 function calculate_other(val){
     fields[val].value = (slidersValues[5]/100) * fields[0].value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
 function calculate_general_administrative(val){
     fields[val].value = (slidersValues[6]/100) * fields[0].value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
 function calculate_salaries_personnel(val){
     fields[val].value = (slidersValues[8]/100) * fields[0].value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
@@ -137,16 +137,14 @@ function calculate_operating_expenses(val){
         value += fields[i].value;
     }
     fields[val].value = value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
 function calculate_net_operating_income(val)
 {
     fields[val].value =  fields[2].value - fields[8].value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
@@ -165,43 +163,37 @@ function calculate_NOI_percentage(val){
 
 function calculate_rent_loss_due_to_vacancy_with_Automation(val){
     fields[val].value = (1-((WithAutomationPercentages[0])/100)) * fields[1].value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
 function calculate_gross_profit_with_Automation(val){
     fields[val].value = fields[11].value - fields[12].value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
 function calculate_advertising_marketing_with_Automation(val){
     fields[val].value = (1-((WithAutomationPercentages[1])/100)) * fields[4].value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
 function calculate_general_administrative_with_Automation(val){
     fields[val].value = (1-((WithAutomationPercentages[3])/100)) * fields[6].value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
 function calculate_salaries_personnel_with_Automation(val){
     fields[val].value = (1-((WithAutomationPercentages[4])/100)) * fields[7].value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
 function calculate_new_software_cost_with_Automation(val){
     fields[val].value = WithAutomationPercentages[2] * slidersValues[0] * 12;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
@@ -211,15 +203,13 @@ function calculate_operating_expenses_with_Automation(val){
         value += fields[i].value;
     }
     fields[val].value = value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
 function calculate_net_operating_income_with_Automation(val){
     fields[val].value =  fields[13].value - fields[20].value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
@@ -232,8 +222,7 @@ function calculate_NOI_percentage_with_Automation(val){
 //summary
 function calculate_net_operating_income_increase(val){
     fields[val].value =  fields[21].value - fields[9].value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
@@ -251,15 +240,13 @@ function calculate_time_to_pay_off_new_technology(val){
 
 function calculate_new_technology_roi_multiple(val){
     fields[val].value =  fields[24].value / fields[19].value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = "X "+ fields[val].value.toFixed(1);
     return fields[val].valueFormatted;
 }
 
 function calculate_Revenue_recovered_from_vacancy_loss(val){
     fields[val].value =  fields[1].value - fields[12].value;
-    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
-    fields[val].valueFormatted = "$ " + fields[val].value.toLocaleString('en-US', opciones);
+    fields[val].valueFormatted = reducirNumero(fields[val].value)
     return fields[val].valueFormatted;
 }
 
@@ -271,6 +258,18 @@ function calculate_total_opex(val){
     fields[val].value = value;
     fields[val].valueFormatted = fields[val].value.toFixed(0)+" %";
     return fields[val].valueFormatted;
+}
+
+//helpers
+function reducirNumero(numero) {
+    var opciones = { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 0, useGrouping: true, currency: 'USD' };
+    if (numero >= 1000000) {
+      return "$ " + (numero / 1000000).toFixed(1) + 'M';
+    } else if (numero >= 200000) {
+      return "$ " + (numero / 1000).toFixed(0) + 'k';
+    } else {
+        return "$ "+ numero.toLocaleString('en-US', opciones);
+    }
 }
 
 createSliders();
