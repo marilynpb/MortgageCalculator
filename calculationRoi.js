@@ -344,7 +344,7 @@ function calculate_noi_increase_summary(val){
 
 function calculate_time_to_pay_off_new_technology_sumamry(val){
     fields[val].value = fields[17].value
-    fields[val].valueFormatted = fields[val].value.toFixed(2) + " %";
+    fields[val].valueFormatted = fields[val].value.toFixed(0) + " Days";
     return fields[val].valueFormatted;
 }
 
