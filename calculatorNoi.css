@@ -347,6 +347,11 @@ input[type="range"]:active::-webkit-slider-thumb{
     display: none;
 }
 
+.view-icon{
+    width: 22px;
+    cursor: pointer;
+}
+
 .container-download{
     background-color:#F8F9FD;
     box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
