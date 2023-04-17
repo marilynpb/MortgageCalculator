@@ -47,7 +47,7 @@ function createSliders(){
     for (let i=0; i<=slidersID.length-1; i++){
         let range=document.getElementById(slidersID[i]);
         let rangeValue=document.getElementById(slidersInfo[i]);
-        if (i>=3){
+        if (i>=2){
             rangeValue.innerHTML = range.value + " %";
         }else{
             rangeValue.innerHTML = range.value
