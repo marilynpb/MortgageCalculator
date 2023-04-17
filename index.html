@@ -30,26 +30,26 @@
                 <!-- Result Sumary Start -->
                 <div class="col-12 container-result-sumary p-0 mt-4 pt-3">
                     <div class="container">
-                        <div class="row justify-content-evenly w-100">
-                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                        <div class="w-100 d-md-flex justify-content-md-around  d-sm-block justify-content-sm-center p-0 m-0">
+                            <div class="w-100">
                                 <input type="text" class="w-100 text-center ganancy" id="net-operating-income-increase" name="net-operating-income-increase" placeholder="$-" disabled value="$ 0">  
                                 <label for="net-operating-income-increase" class="text-center w-100 ganancy">Net Operating Income Increase</label>
                             </div>
-                            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6">
+                            <div class="w-100">
                                 <input type="text" class="w-100 text-center" placeholder="$-" id="revenue-recovered-from-vacancy-loss" name="revenue-recovered-from-vacancy-loss" disabled value="$ 0">
-                                <label for="revenue-recovered-from-vacancy-loss" class="text-center w-100">Revenue recovered from Vacancy loss</label>
+                                <label for="revenue-recovered-from-vacancy-loss" class="text-center w-100">Recovered from Vacancy loss</label>
                             </div>
-                            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6">
+                            <div class="w-100">
                                 <input type="text" class="w-100 text-center" id="noi-increase" name="noi-increase" placeholder="%-" disabled value="0 %">  
                                 <label for="noi-increase" class="text-center w-100">NOI % increase</label>
                             </div>
-                            <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6">
+                            <div class="w-100">
                                 <input type="text" class="w-100 text-center" id="time-to-pay-off-new-technology" name="time-to-pay-off-new-technology" disabled value="0 Days">   
                                 <label for="time-to-pay-off-new-technology" class="text-center w-100">Time to pay off new technology</label>
                             </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                            <div class="w-100">
                                 <input type="text" class="w-100 text-center" id="new-technology-roi-multiple" name="new-technology-roi-multiple" disabled value="0">  
-                                <label for="new-technology-roi-multiple" class="text-center w-100">X return on money spent on technology</label>
+                                <label for="new-technology-roi-multiple" class="text-center w-100">Return on money spent on technology</label>
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,10 @@
                         <img src="./img/download-icon-violet.svg" class="img-fluid" alt="csv-icon">
                     </button>
                     <form class="hidden" id="download-form">
-                        <h4 class="my-0 fw-bold pt-2 pb-3">Download report</h4>
+                        <h4 class="my-0 fw-bold pt-2 pb-3">
+                            Download report
+                            <img src="./img/eye-slash.svg" class="view-icon mx-2">
+                        </h4>
                         <div class="row">
                             <div class="col-12">
                                 <input placeholder="Enter your email to download the report" class="w-50 p-2">
