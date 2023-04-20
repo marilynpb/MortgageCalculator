@@ -410,9 +410,12 @@ calculateAll();
 
 //convert to pdf
 function generarPDFNOI(){
-    var mail=document.getElementById("email").value
+    var mail=document.getElementById("email");
+    var alertMsg = document.querySelector('.alert-input');
     const re = /\S+@\S+\.\S+/;
-    if(re.test(mail)){
+    if(re.test(mail.value)){
+        alertMsg.classList.add('alert-hidden'); 
+        mail.classList.remove('border-red');
         var doc = new jsPDF();
         
         doc.setFillColor(47, 77, 237); //Bg Portfolio Title
@@ -610,8 +613,80 @@ function generarPDFNOI(){
         // Guardar el archivo PDF
         doc.save("Test.pdf");
     }else{
-        alert("Please enter a valid email")     
+        alertMsg.classList.remove('alert-hidden'); 
+        mail.classList.add('border-red');
     }    
+}
+
+function descargarXLSX() {
+    var mail=document.getElementById("email")
+    var alertMsg = document.querySelector('.alert-input');
+    const re = /\S+@\S+\.\S+/;
+    if(re.test(mail.value)){
+        alertMsg.classList.add('alert-hidden'); 
+        mail.classList.remove('border-red');
+        // Crear un nuevo libro y una nueva hoja de cálculo
+        var libro = XLSX.utils.book_new();
+        
+        var hoja = XLSX.utils.sheet_add_aoa(libro.Sheets, [['Portfolio values (input)']], {origin: 'A3'});
+        var hoja = XLSX.utils.sheet_add_aoa(libro.Sheets, [
+            ['Number of units managed', slidersValues[0].toString()],
+            ['Average monthly rent per unit', "$ " + slidersValues[1].toString()],
+            ['Management fee', slidersValues[2].toString() + " %"],
+            ['Vacancy rate', slidersValues[3].toString() + " %"],
+        ], {origin: 'A4'});
+
+        var hoja = XLSX.utils.sheet_add_aoa(libro.Sheets, [['Operating Expenses % of Gross Rent Per unit (input)']], {origin: 'A9'});
+        var hoja = XLSX.utils.sheet_add_aoa(libro.Sheets, [
+            ['Salaries & Personnel', slidersValues[4].toString()+" %"],
+            ['New Owner Advertising', slidersValues[5].toString()+" %"],
+            ['Facilities (auto, tech, rent etc.)', slidersValues[6].toString()+" %"],
+            ['Other operating expenses', slidersValues[7].toString()+" %"],
+            ['Payroll taxes', slidersValues[8].toString()+" %"],
+            ['Total Opex', fields[39].valueFormatted],
+        ], {origin: 'A9'}); 
+
+        var hoja = XLSX.utils.sheet_add_aoa(libro.Sheets, [
+            ['','Without Automation',' With Automation','Net Gain'],
+            ['Revenue: Management fees', fields[18].valueFormatted,fields[0].valueFormatted,''],
+            ['Revenue: Application fees', fields[19].valueFormatted,fields[1].valueFormatted,''],
+            ['Revenue: Leasing fees', fields[20].valueFormatted,fields[2].valueFormatted,''],
+            ['Revenue: Owner fees', fields[21].valueFormatted,fields[3].valueFormatted,''],
+            ['Revenue: Tenant fees', fields[22].valueFormatted,fields[4].valueFormatted,''],
+            ['Revenue: Other', fields[23].valueFormatted,fields[5].valueFormatted,''],
+            ['Revenue loss due to vacancy', fields[24].valueFormatted,fields[6].valueFormatted,reducirNumero(fields[6].value - fields[24].value)],
+            ['Gross Profit', fields[25].valueFormatted,fields[7].valueFormatted,''],
+            ['','','',''],
+            ['Salaries & Personnel', fields[26].valueFormatted,fields[8].valueFormatted,reducirNumero(fields[26].value - fields[8].value)],
+            ['New Owner Advertising', fields[27].valueFormatted,fields[9].valueFormatted,'-'],
+            ['Facilities (auto, tech, rent etc.)', fields[28].valueFormatted,fields[10].valueFormatted,reducirNumero(fields[28].value - fields[10].value)],
+            ['Other operating expenses', fields[29].valueFormatted,fields[11].valueFormatted,'-'],
+            ['Payroll taxes', fields[30].valueFormatted,fields[12].valueFormatted,reducirNumero(fields[30].value - fields[12].value)],
+            ['New software cost', '-',fields[13].valueFormatted,fields[13].valueFormatted],
+            ['Operating Expenses', fields[31].valueFormatted,fields[14].valueFormatted,reducirNumero(fields[31].value - fields[14].value)],
+            ['Net Operating Income', fields[32].valueFormatted,fields[15].valueFormatted,reducirNumero(fields[15].value - fields[32].value)],
+            ['Net Operating Income %', fields[33].valueFormatted,fields[16].valueFormatted,reducirNumero(fields[16].value - fields[33].value)],
+            ['Days to pay off new technology', '',fields[17].valueFormatted,''],
+        ], {origin: 'A20'}); 
+
+        var hoja = XLSX.utils.sheet_add_aoa(libro.Sheets, [['Results Summary']], {origin: 'E3'});
+        var hoja = XLSX.utils.sheet_add_aoa(libro.Sheets, [
+            ['Revenue recovered from Vacancy loss', fields[35].valueFormatted],
+            ['Net Operating Income Increase', fields[34].valueFormatted],
+            ['NOI % increase', fields[36].valueFormatted + ' %'],
+            ['Time to pay off new technology', fields[37].valueFormatted],
+            ['New Technology ROI Multiple', fields[38].valueFormatted]
+        ], {origin: 'E4'}); 
+        
+        // Agregar la hoja de cálculo al libro
+        XLSX.utils.book_append_sheet(libro, hoja, 'Portfolio values');
+        
+        // Descargar el archivo XLSX
+        XLSX.writeFile(libro, 'datos.xlsx');
+    }else{
+        alertMsg.classList.remove('alert-hidden'); 
+        mail.classList.add('border-red');
+    }
 }
 
 function figmaX(val){
