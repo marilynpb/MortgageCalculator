@@ -318,6 +318,17 @@ input[type="range"]:active::-webkit-slider-thumb{
     border-radius: 5px;
 }
 
+
+.container-range span{    
+    width: 13%;
+    position: relative;
+    background-color: #2F4DED;
+    color: #ffffff;
+    text-align: center;
+    padding: 5px 0;
+    margin: 0%;
+}
+
 /* Portfolio Values (Ranges) End */
 
 

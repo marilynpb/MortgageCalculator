@@ -72,7 +72,7 @@
                                 <input type="email" id="email" placeholder="Enter your email to download the report" class="w-50 p-2">
                             </div>
                             <div class="col-12 mt-4">
-                                <button type="button" id="download-csv-button" class="btn btn-lg btn-primary mb-4 mx-lg-5 mx-sm-0 rounded-3">
+                                <button type="button" onclick="descargarXLSX()" id="download-csv-button" class="btn btn-lg btn-primary mb-4 mx-lg-5 mx-sm-0 rounded-3">
                                     Download CSV
                                     <img src="./img/excel-icon.svg" class="img-fluid" alt="csv-icon">
                                 </button>
@@ -125,7 +125,7 @@
                                             <div id="rangeValue3" class="p-0 m-0">0</div>
                                         </div>
                                     </div>
-            
+
                                     <!-- Operating Expenses % of Gross Rent Per unit (Range) Start -->
                                     <h2 class="mt-5 mb-3 fw-bold title-portfolio">Operating Expenses % of Gross Rent Per unit</h2>
                                     <div class="col-12 mb-4">
@@ -197,50 +197,84 @@
                                     <h2 class="mb-3 mt-4 mx-1 fw-bold title-portfolio">Portfolio values</h2>
                                     <div class="col-12 mb-4">
                                         <label for="range-text">Number of units managed:</label>
-                                        <input type="text" id="customRange1i" value="2001" maxlength="4">
+                                        <div class="container-range">
+                                            <input class="w-100" type="text" id="customRange1i" value="2001" maxlength="4">
+                                            <span>U</span>
+                                        </div>
+
                                     </div>
                                     <div class="col-12 mb-4">
                                         <label class="p-0 m-0 mx-1">Average monthly rent per unit</label>
-                                        <input type="text" id="customRange2i" value="1244" maxlength="4">
+                                        <div class="container-range">
+                                            <input class="w-100" type="text" id="customRange2i" value="1244" maxlength="4">
+                                            <span>$</span>
+                                        </div>
                                     </div>
                                     <div class="col-12 mb-4">
                                         <label class="p-0 m-0 mx-1">Vacancy rate</label>
-                                        <input type="text" id="customRange3i" value="3" maxlength="4">
+                                        <div class="container-range">
+                                            <input class="w-100" type="text" id="customRange3i" value="3" maxlength="4">
+                                            <span>%</span>
+                                        </div>
                                     </div>
-            
+
                                     <!-- Operating Expenses % of Gross Rent Per unit (Range) Start -->
                                     <h2 class="mt-5 mb-3 fw-bold title-portfolio">Operating Expenses % of Gross Rent Per unit</h2>
                                     <div class="col-12 mb-4">
                                         <label class="p-0 m-0 mx-1">Repairs & Maintenance</label>
-                                        <input type="text" id="customRange4i" value="5" maxlength="4">
+                                        <div class="container-range">
+                                            <input class="w-100" type="text" id="customRange4i" value="5" maxlength="4">
+                                            <span>%</span>
+                                        </div>
                                     </div>
                                     <div class="col-12 mb-4">
                                         <label class="p-0 m-0 mx-1">Advertising & Marketing</label>
-                                        <input type="text" id="customRange5i" value="2" maxlength="4">
+                                        <div class="container-range">
+                                            <input class="w-100" type="text" id="customRange5i" value="2" maxlength="4">
+                                            <span>%</span>
+                                        </div>
                                     </div>
                                     <div class="col-12 mb-4">
                                         <label class="p-0 m-0 mx-1">Management Fees</label>
-                                        <input type="text" id="customRange6i" value="4" maxlength="4">
+                                        <div class="container-range">
+                                            <input class="w-100" type="text" id="customRange6i" value="4" maxlength="4">
+                                            <span>%</span>
+                                        </div>
                                     </div>
                                     <div class="col-12 mb-4">
                                         <label class="p-0 m-0 mx-1">General & Administrative</label>
-                                        <input type="text" id="customRange7i" value="3" maxlength="4">
+                                        <div class="container-range">
+                                            <input class="w-100" type="text" id="customRange7i" value="3" maxlength="4">
+                                            <span>%</span>
+                                        </div>
                                     </div>
                                     <div class="col-12 mb-4">
                                         <label class="p-0 m-0 mx-1">Utilities</label>
-                                        <input type="text" id="customRange8i" value="2" maxlength="4">
+                                        <div class="container-range">
+                                            <input class="w-100" type="text" id="customRange8i" value="2" maxlength="4">
+                                            <span>%</span>
+                                        </div>
                                     </div>
                                     <div class="col-12 mb-4">
                                         <label class="p-0 m-0 mx-1">Salaries & Personnel</label>
-                                        <input type="text" id="customRange9i" value="10" maxlength="4">
+                                        <div class="container-range">
+                                            <input class="w-100" type="text" id="customRange9i" value="10" maxlength="4">
+                                            <span>%</span>
+                                        </div>
                                     </div>
                                     <div class="col-12 mb-4">
                                         <label class="p-0 m-0 mx-1">Insurance and Taxes</label>
-                                        <input type="text" id="customRange10i" value="14" maxlength="4">
+                                        <div class="container-range">
+                                            <input class="w-100" type="text" id="customRange10i" value="14" maxlength="4">
+                                            <span>%</span>
+                                        </div>
                                     </div>
                                     <div class="col-12">
                                         <label class="p-0 m-0 mx-1">Other</label>
-                                        <input type="text" id="customRange11i" value="1" maxlength="4">
+                                        <div class="container-range">
+                                            <input class="w-100" type="text" id="customRange11i" value="1" maxlength="4">
+                                            <span>%</span>
+                                        </div>
                                     </div>
                                     <!-- Operating Expenses % of Gross Rent Per unit (Range) End -->
                                 </div>
@@ -262,7 +296,7 @@
                         </div>
                     </div>
                     <!-- Total Opex End -->
-
+                    
                 </div>
                 <!-- Portfolio Values (Ranges) Start -->
 
@@ -456,6 +490,8 @@
 
     <!-- JsPDF JS -->
     <script type="text/javascript" src="jspdf.min.js"></script>
+
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 
     <!-- Bootstrap JS -->
     <script src="https://unpkg.com/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
