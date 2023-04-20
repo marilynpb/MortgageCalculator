@@ -410,9 +410,12 @@ calculateAll();
 
 //convert to pdf
 function generarPDFNOI(){
-    var mail=document.getElementById("email").value
+    var mail=document.getElementById("email");
+    var alertMsg = document.querySelector('.alert-input');
     const re = /\S+@\S+\.\S+/;
-    if(re.test(mail)){
+    if(re.test(mail.value)){
+        alertMsg.classList.add('alert-hidden'); 
+        mail.classList.remove('border-red');
         var doc = new jsPDF();
         
         doc.setFillColor(47, 77, 237); //Bg Portfolio Title
@@ -610,7 +613,8 @@ function generarPDFNOI(){
         // Guardar el archivo PDF
         doc.save("Test.pdf");
     }else{
-        alert("Please enter a valid email")     
+        alertMsg.classList.remove('alert-hidden'); 
+        mail.classList.add('border-red');    
     }    
 }
 
