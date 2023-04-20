@@ -329,9 +329,12 @@ createSliders();
 
 //convert to pdf
 function generarPDFNOI(){
-    var mail=document.getElementById("email").value
+    var mail=document.getElementById("email");
+    var alertMsg = document.querySelector('.alert-input');
     const re = /\S+@\S+\.\S+/;
-    if(re.test(mail)){
+    if(re.test(mail.value)){
+        alertMsg.classList.add('alert-hidden'); 
+        mail.classList.remove('border-red');
         var doc = new jsPDF();
         
         doc.setFillColor(47, 77, 237); //Bg Portfolio Title
@@ -513,14 +516,18 @@ function generarPDFNOI(){
         // Guardar el archivo PDF
         doc.save("Test.pdf");
     }else{
-        alert("Please enter a valid email")     
+        alertMsg.classList.remove('alert-hidden'); 
+        mail.classList.add('border-red');    
     }
 }
 
 function descargarXLSX() {
-    var mail=document.getElementById("email").value
+    var mail=document.getElementById("email")
+    var alertMsg = document.querySelector('.alert-input');
     const re = /\S+@\S+\.\S+/;
-    if(re.test(mail)){
+    if(re.test(mail.value)){
+        alertMsg.classList.add('alert-hidden'); 
+        mail.classList.remove('border-red');
         // Crear un nuevo libro y una nueva hoja de cálculo
         var libro = XLSX.utils.book_new();
         
@@ -542,10 +549,10 @@ function descargarXLSX() {
             ['Insurance and Taxes', slidersValues[9].toString()+" %"],
             ['Other', slidersValues[10].toString()+" %"],
             ['Total Opex', fields[28].valueFormatted],
-        ], {origin: 'A9'}); 
+        ], {origin: 'A8'}); 
 
         var hoja = XLSX.utils.sheet_add_aoa(libro.Sheets, [
-            ['','Without Automation',' With Automation','Net Gain']
+            ['','Without Automation',' With Automation','Net Gain'],
             ['Total Rental Income', fields[0].valueFormatted,fields[11].valueFormatted,''],
             ['Rent loss due to vacancy', fields[1].valueFormatted,fields[12].valueFormatted,fields[23].valueFormatted],
             ['Gross Profit', fields[2].valueFormatted,fields[13].valueFormatted,''],
@@ -578,7 +585,8 @@ function descargarXLSX() {
         // Descargar el archivo XLSX
         XLSX.writeFile(libro, 'datos.xlsx');
     }else{
-        alert("Please enter a valid email")     
+        alertMsg.classList.remove('alert-hidden'); 
+        mail.classList.add('border-red');
     }
 }
 
